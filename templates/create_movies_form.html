@@ -8,17 +8,24 @@
 <!-- TODO: Feature 2 -->
 <form action="/movies" method="post">
     <div class="form-group">
-      <label for="inputMovieName">Movie's Name</label>
-      <input type="name" class="form-control" name="inputMovieName" aria-describedby="movieNameHelp" placeholder="Enter Movie's Name">
+      <label for="inputMovieName">Movie Name</label>
+      <input type="name" class="form-control" name="inputMovieName" aria-describedby="movieNameHelp" placeholder="Enter Movie Name">
     </div>
     <div class="form-group">
-        <label for="inputDirectorName">Director's Name</label>
-        <input type="name" class="form-control" name="inputDirectorName" aria-describedby="directorNameHelp" placeholder="Enter Director's Name">
+        <label for="inputDirectorName">Director Name</label>
+        <input type="name" class="form-control" name="inputDirectorName" aria-describedby="directorNameHelp" placeholder="Enter Director Name">
     </div>
-    
+    <div class="form-group">
+        <label for="movieRating">Movie Rating</label>
+        <select class="form-control" name="movieRating">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-
 </form>
-
 
 {% endblock %}
