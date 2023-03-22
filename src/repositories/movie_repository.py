@@ -1,5 +1,5 @@
 from random import randint
-
+# DONT PUSH OR COMMIT THIS FILE
 from src.models.movie import Movie
 
 _movie_repo = None
@@ -18,11 +18,11 @@ def get_movie_repository():
             """Simply return all movies from the in-memory database"""
             return {**self._db}  # Use the splat operator to make a clone of the dict
 
-        def get_movie_by_id(self, movie_id: int) -> Movie | None:
+        def get_movie_by_id(self, movie_id: int) -> Movie:
             """Get a single movie by its ID or None if it does not exist"""
             return self._db.get(movie_id)
 
-        def get_movie_by_title(self, title: str) -> Movie | None:
+        def get_movie_by_title(self, title: str) -> Movie:
             """Get a single movie by its title or None if it does not exist"""
             # Perform a linear search through the in-memory database
             for movie in self._db.values():
