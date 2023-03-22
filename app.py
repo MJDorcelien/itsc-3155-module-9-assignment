@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, abort
 
 from src.repositories.movie_repository import get_movie_repository
 
@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 # Get the movie repository singleton to use throughout the application
 movie_repository = get_movie_repository()
-
 
 @app.get('/')
 def index():
@@ -16,7 +15,20 @@ def index():
 @app.get('/movies')
 def list_all_movies():
     # TODO: Feature 1
-    return render_template('list_all_movies.html', list_movies_active=True)
+    movies_list=movie_repository.get_all_movies()
+    ids_list=[]
+    titles_list=[]
+    directors_list=[]
+    ratings_list=[]
+    for key, values in movies_list.items():
+        ids_list.append(values.movie_id)
+        titles_list.append(values.title)
+        directors_list.append(values.director)
+        ratings_list.append(values.rating)
+    n=len(ids_list)
+    return render_template('list_all_movies.html', list_movies_active=True, ids_list=ids_list,
+                           titles_list=titles_list, directors_list=directors_list,
+                           ratings_list=ratings_list, n=n)
 
 
 @app.get('/movies/new')
@@ -44,7 +56,12 @@ def search_movies():
 @app.get('/movies/<int:movie_id>')
 def get_single_movie(movie_id: int):
     # TODO: Feature 4
-    return render_template('get_single_movie.html')
+    movie = movie_repository.get_movie_by_id(movie_id)
+    print(movie)
+    print(movie_repository.get_all_movies())
+    if not movie:
+        return abort(404)
+    return render_template('get_single_movie.html', movie=movie)
 
 
 @app.get('/movies/<int:movie_id>/edit')
