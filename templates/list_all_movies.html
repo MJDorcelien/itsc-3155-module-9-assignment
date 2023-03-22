@@ -13,6 +13,7 @@
             <th>Title</th>
             <th>Director</th>
             <th>Rating</th>
+            <th>Edit/Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,9 @@
             <td>{{titles_list[i]}}</td>
             <td>{{directors_list[i]}}</td>
             <td>{{ratings_list[i]}}</td>
+            <td><form action="/movies/{{ids_list[i]}}" method="get">
+                <button type="submit" class="btn btn-danger" id="submit-btn">Edit/Delete</button>
+            </form></td>
         </tr>
         {% endfor %}
     </tbody>

@@ -7,7 +7,7 @@
 <h4 class="pb-2">Director: {{movie.director}}</h4>
 <h4 class="pb-2">Rating: {{movie.rating}}</h4>
 <!-- TODO: Feature 4 -->
-<form action="/movies/{{movie.movie_id}}/edit" method="post">
+<form action="/movies/{{movie.movie_id}}/edit" method="get">
     <button type="submit" class="btn btn-warning" id="submit-btn">Edit</button>
 </form>
 <form action="/movies/{{movie.movie_id}}/delete" method="post">
