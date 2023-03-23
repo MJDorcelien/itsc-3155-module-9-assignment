@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 # Get the movie repository singleton to use throughout the application
 movie_repository = get_movie_repository()
+movie_repository.create_movie("Midsommar", "Ari Aster", 8)
+
 
 @app.get('/')
 def index():
@@ -78,13 +80,19 @@ def get_single_movie(movie_id: int):
 
 @app.get('/movies/<int:movie_id>/edit')
 def get_edit_movies_page(movie_id: int):
-    return render_template('edit_movies_form.html')
+    movie=movie_repository.get_movie_by_id(movie_id)
+    return render_template('edit_movies_form.html', movie=movie)
 
 
 @app.post('/movies/<int:movie_id>')
 def update_movie(movie_id: int):
     # TODO: Feature 5
     # After updating the movie in the database, we redirect back to that single movie page
+    newtitle = request.form.get('title')
+    newdirector = request.form.get('director')
+    newrating = request.form.get('rating')
+    id = movie_id
+    movie_repository.update_movie(id,newtitle, newdirector, newrating)
     return redirect(f'/movies/{movie_id}')
 
 
