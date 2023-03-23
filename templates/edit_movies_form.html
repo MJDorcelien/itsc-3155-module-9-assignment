@@ -8,12 +8,18 @@
 <h2 class="mb-3">Edit movie information below:</h2>
 <form action="/movies/{{movie_id}}" method="post" name="movie_edit">
 
-    <label for="title">Title:</label> 
-    <input type="text" name="title" id="title" placeholder={{movie.title}}>
-    <label for="director">Director:</label>
-    <input type="text" name="director" id="director" placeholder={{movie.director}}>
-    <input for="rating">Rating:</label>
-    <input type="number" min="0" max="5" name="rating" id="rating" placeholder={{movie.rating}}>
-    <button type="submit">Update Movie</button>
+    <div class="mb-3">
+        <label for="title">Title:</label> 
+        <input type="text" name="title" id="title" placeholder={{movie.title}}>
+    </div>
+    <div class="mb-3">
+        <label for="director">Director:</label>
+        <input type="text" name="director" id="director" placeholder={{movie.director}}>
+    </div>
+    <div class="mb-3">
+        <label for="rating">Rating:</label>
+        <input type="number" min="0" max="5" name="rating" id="rating" placeholder={{movie.rating}}>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Movie</button>
 </form>
 {% endblock %}
