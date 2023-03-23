@@ -19,3 +19,5 @@ def test_get_all_movies(test_app: FlaskClient):
     assert '<th>ID #</th>' in response_data
     assert '<td>Creed</td>' in response_data
     assert '<td>John Wick</td>' not in response_data
+
+    movie.clear_db()

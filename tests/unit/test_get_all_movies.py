@@ -28,7 +28,4 @@ def test_list_all_movies():
     assert "Keanu Reeves Reeves" not in directors_list
     assert 7 not in ratings_list
 
-    # john_wick=Movie(8,"John Wick","Keanu Reeves", 7)
-
-    # assert creed == target.values()
-    # assert john_wick not in movies
+    movie.clear_db()
