@@ -26,12 +26,3 @@ def test_edit_movie(test_app: FlaskClient):
     assert '<h1 class="pb-2">Title: Midsommar</h4>' in data
     assert '<h4 class="pb-2">Director: Ari Aster</h4>' in data
     assert '<h4 class="pb-2">Rating: 5</h4>' in data
-
-    
-
-
-
-
-
-
-

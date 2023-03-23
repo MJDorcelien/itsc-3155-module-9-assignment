@@ -16,5 +16,5 @@ def test_create_movie():
 
     assert movie is not None
 
-
+    movie_repository.clear_db()
     

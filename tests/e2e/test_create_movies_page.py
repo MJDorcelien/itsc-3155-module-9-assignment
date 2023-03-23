@@ -39,3 +39,4 @@ def test_create_movies_page(test_app: FlaskClient):
 
     assert movies[movie.movie_id].rating == '4'
 
+    movie_repository.clear_db()
