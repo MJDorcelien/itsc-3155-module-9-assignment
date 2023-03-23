@@ -50,7 +50,19 @@ def create_movie():
 @app.get('/movies/search')
 def search_movies():
     # TODO: Feature 3
-    return render_template('search_movies.html', search_active=True)
+   if request.args.get('search_title'):
+       # Get the movie title from the form
+       title = request.args['search_title']
+       # Look up the movie by its title
+       movie = movie_repository.get_movie_by_title(title)
+       # If the movie was found, display its rating
+       if movie:
+           return render_template('search_movies.html', search_active=True, movie=movie)
+       # If the movie was not found, display an error message
+       else:
+           return render_template('search_movies.html', search_active=True, error=f"No movie found with title '{title}'")
+   # If the form has not been submitted, just display the search form
+   return render_template('search_movies.html', search_active=True)
 
 
 @app.get('/movies/<int:movie_id>')
